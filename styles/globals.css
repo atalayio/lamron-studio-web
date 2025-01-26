@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --foreground: 206 49% 19%;    /* #1A334A */
+    
+    --card: 207 39% 57%;          /* #5AA5CD */
+    --card-foreground: 206 49% 19%; /* #1A334A */
+    
+    --popover: 238 17% 53%;       /* #6F71A1 */
+    --popover-foreground: 206 49% 19%; /* #1A334A */
+    
+    --primary: 206 49% 19%;       /* #1A334A */
+    --primary-foreground: 207 39% 57%; /* #5AA5CD */
+    
+    --secondary: 201 56% 27%;     /* #1E536E */
+    --secondary-foreground: 180 82% 52%; /* #27E6EC */
+    
+    --muted: 180 82% 52%;         /* #27E6EC */
+    --muted-foreground: 206 49% 19%; /* #1A334A */
+    
+    --accent: 168 74% 36%;        /* #18A387 */
+    --accent-foreground: 206 49% 19%; /* #1A334A */
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 206 49% 19%;        /* #1A334A */
+    --input: 206 49% 19%;         /* #1A334A */
+    --ring: 206 49% 19%;          /* #1A334A */
+    
+    --radius: 0.5rem;
+    --font-chakra-petch: 'Chakra Petch', sans-serif;
+    --font-space-grotesk: 'Space Grotesk', sans-serif;
+  }
+
+  .dark {
+    --background: 206 49% 19%;    /* #1A334A */
+    --foreground: 207 39% 57%;    /* #5AA5CD */
+    
+    --card: 201 56% 27%;          /* #1E536E */
+    --card-foreground: 207 39% 57%; /* #5AA5CD */
+    
+    --popover: 238 17% 53%;       /* #6F71A1 */
+    --popover-foreground: 180 82% 52%; /* #27E6EC */
+    
+    --primary: 180 82% 52%;       /* #27E6EC */
+    --primary-foreground: 206 49% 19%; /* #1A334A */
+    
+    --secondary: 168 74% 36%;     /* #18A387 */
+    --secondary-foreground: 207 39% 57%; /* #5AA5CD */
+    
+    --muted: 201 56% 27%;         /* #1E536E */
+    --muted-foreground: 180 82% 52%; /* #27E6EC */
+    
+    --accent: 207 39% 57%;        /* #5AA5CD */
+    --accent-foreground: 206 49% 19%; /* #1A334A */
+    
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 201 56% 27%;        /* #1E536E */
+    --input: 201 56% 27%;         /* #1E536E */
+    --ring: 207 39% 57%;          /* #5AA5CD */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-chakra-petch);
+    @apply font-bold tracking-tight;
+  }
+
+  .nav-item {
+    font-family: var(--font-space-grotesk);
+    @apply tracking-wide;
+  }
+}
+
+/* Custom Font Style */
+.custom-font {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.1em; /* Harfler arası boşluk için */
+  text-transform: uppercase; /* Büyük harf görünümü */
+}
+
+/* Clip Path Reveal Animation */
+ /* .theme-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: var(--background);
+  pointer-events: none;
+  clip-path: inset(0 0 100% 0);
+  animation: none;
+   transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1); 
+  } */
+
+  .theme-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    pointer-events: none;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    mix-blend-mode: multiply;
+  }
+  
+  .clipPathReveal {
+    animation: clipReveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+  
+  @keyframes clipReveal {
+    0% { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  }
+  
+  /* Smooth renk geçişleri */
+  *
+
+/* Theme switch icon animation */
+.theme-switch-icon {
+  transition: all 0.3s ease;
+}
+
+.theme-switch-icon.out {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.theme-switch-icon.in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Dark mode styles */
+:root {
+  --background: #ffffff;
+  --foreground: #1A334A;
+}
+
+[data-theme="dark"] {
+  --background: var(--dark-background);
+  --background: #1A334A;
+  --foreground: #ffffff;
+}
